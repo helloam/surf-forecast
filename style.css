@@ -1,0 +1,95 @@
+body {
+    background-color:white;
+}
+  #body {
+    margin: 1% 0;
+  }
+  
+  th, td {
+    text-align:center;
+  }
+  
+  
+  h1 {
+    display:none;
+  }
+  
+  .surf-description {
+  
+    font-size: 44px;
+    margin: initial;
+    width: 100%;
+    padding: initial;
+  
+  }
+  
+  a {
+    min-width: 500px;
+    min-height: 250px;
+    margin: 2% 0;
+    font-size: large;
+    font-weight: bold;
+  }
+  
+  p {
+    font-size: larger;
+    font-weight: bold;
+  }
+  
+  #conditions {
+    opacity:0.8;
+    border-radius: 15px 15px 15px 15px;
+  }
+  
+  #cities {
+    margin-top: 5%;
+    width: 100%;
+  }
+  
+  .modal-bg {
+    width: 100%;
+    height: 100%;
+    background-color:transparent;
+    position: absolute;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+    display: none;
+  }
+  
+  .modal-content {
+    width: 350px;
+    height: 300px;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    font-size: 45px;
+    transform: rotate( 45deg );
+    cursor: pointer;
+  }
+  
+  #current-beach {
+    font-size: 40px;
+    font-weight: bolder;
+  }
+  
+  #surf-description {
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  @media screen and (min-width: 600px) {
+    
+    #cities {
+      width: 100%;
+    }
+  
+  }
