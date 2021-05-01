@@ -1,0 +1,37 @@
+.navbar {
+    position: sticky;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    left: 0;
+    color: whitesmoke;
+    background-color: black;
+    text-align: center;
+    justify-content: center;
+  }
+
+.card {
+    width: 20rem;
+    padding: 1%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Adds shadows to the card */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  /* Add some padding inside the card container */
+  .container {
+    display: rows;
+    grid-template-columns: 300px;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+  }
