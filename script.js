@@ -151,7 +151,7 @@ $(document).ready(function () {
        var lat = surspot[event.target.value].lat;
        var lng = surfspot[event.target.value].lng;
        var beachName = surftown[event.target.value].name;
- 
+       
        // save last search option value and lat lng in local.storage
        localStorage.setItem("last-beach-name", beachName);
        localStorage.setItem("last-selection", selection);
