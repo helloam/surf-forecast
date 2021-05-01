@@ -1,11 +1,17 @@
+:root {
+  --background-color: #5470BA;
+  --light-blue: #869FE3;
+  --white: whitesmoke;
+}
+
 .navbar {
     position: sticky;
     width: 100%;
     height: 50px;
     top: 0;
     left: 0;
-    color: whitesmoke;
-    background-color: black;
+    color: var(--white);
+    background-color: var(--background-color);
     text-align: center;
     justify-content: center;
   }
