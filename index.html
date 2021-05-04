@@ -1,35 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/styles.css">
-    <script src="./assets/scripts.js" defer></script>
+    <title>surf Forecasts</title>
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
-
 <body>
-    <div class="navbar">
-    <h1>Surfing Forecast</h1>
+     <!-- search bar -->
+    <div class="search-class">
+        <!-- titles -->
+        <h1 class="title">Surf Forecast</h1>
+        <form>
+            <input type="text" id="search-bar" class="search" name="search" placeholder="location"><button id="search-btn" class="searchbtn"><i class="fas fa-search" id="icon-btn"></i></button>
+        </form>
+    <!-- beaches butttons -->
+        <button class="buttons" id='half-moon-bay'><i class="fas fa-map-pin icon"></i>Half-Moon Bay</button>
+        <button class="buttons" id='santa-cruz'><i class="fas fa-map-pin icon"></i>Santa Cruz</button>
+        <button class="buttons" id='carmel'><i class="fas fa-map-pin icon"></i>Carmel Beach</button>
+        <button class="buttons" id='pismo'><i class="fas fa-map-pin icon"></i>Pismo Beach</button>
+        <button class="buttons" id='santa-barbara'><i class="fas fa-map-pin icon"></i>Santa Barbara Beach</button>
+        <button class="buttons" id='venice'><i class="fas fa-map-pin icon"></i>Venice Beach</button>
+        <button class="buttons" id='la-jolla'><i class="fas fa-map-pin icon"></i>Ja Jolla Beach</button>
     </div>
-
-    <div class="container">
-    <div class="card">
-    <img src="./images/random/download.png" alt="Icon" style="width:50px">
-        <h4><b>Forecast</b></h4>
-        <p>Degree and Temp</p>
+    <div class="main-weather">
+        <h2 class="location" id="beach-title">Santa Barbara</h2>
+        <p class="beach">Beach</p>
+        <div class="weather">
+            <h2 class="main-temp">89°</h2>
+            <div class="high-low">
+                <p class="high">91°</p>
+                <p class="low">73°</p>
+            </div>
+            <img src="./sun.png" alt="weather icon">
+        </div>
+        <h2 class="wave-report">Wave Report</h2>
+        <div class="report-container">
+            <div class="day">
+                <p class="time">12PM</p>
+                <i class="fas fa-water"></i>
+                <p class="wave-height">3ft</p>
+            </div>
+            <div class="day">
+                <p class="time">1PM</p>
+                <i class="fas fa-water"></i>
+                <p class="wave-height">4ft</p>
+            </div>
+            <div class="day">
+                <p class="time">2PM</p>
+                <i class="fas fa-water"></i>
+                <p class="wave-height">6ft</p>
+            </div>
+            <div class="day">
+                <p class="time">3PM</p>
+                <i class="fas fa-water"></i>
+                <p class="wave-height">3ft</p>
+            </div>
+            <div class="day">
+                <p class="time">4PM</p>
+                <i class="fas fa-water"></i>
+                <p class="wave-height">2ft</p>
+            </div>
+            <div class="day">
+                <p class="time">5PM</p>
+                <i class="fas fa-water"></i>
+                <p class="wave-height">6ft</p>
+            </div>
+        </div>
     </div>
-    </div> 
-
-    <div class="container">
-    <div class="card">
-    <img src="./images/random/download.png" alt="Icon" style="width:50px">
-        <h4><b>Forecast</b></h4>
-        <p>Degree and Temp</p>
-    </div>
-    </div> 
-
 </body>
-
 </html>
