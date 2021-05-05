@@ -1,31 +1,113 @@
-$(document).ready(function () {
-   $('select').formSelect();
-   //Testing comment
+//Commented out previous format using a drop-down menu for preselected locations
+/*$(document).ready(function () {
+   $('select').formSelect();*/
+
    //Predefined surfing locations and their coordinates
-   var surfSpot = [
+  /* var surfSpot = [
       { name: "Select beach" },
+      { name: "Half Moon Bay", lat: 37.479500, lng: -122.455873 },
       { name: "Santa Cruz", lat: 36.952005, lng: -122.001477 },
       { name: "Pacifica", lat: 37.606077, lng: -122.513127 },
-      { name: "Asilomar State Beach", lat: 36.618758, lng: -121.943070 },
-      { name: "Newport Beach", lat: 33.599058, lng: -117.939925 },
+      { name: "Pismo Beach", lat: 35.140374, lng: -120.648411 },
+      { name: "Santa Barbara", lat: 34.408765, lng: -119.804104 },
       { name: "San Diego", lat: 32.702983, lng: -117.291659 },
-   ];
+   ];*/
+
+//Function to get current weather and display in main-weather div:
+var date = moment().format('MMMM Do YYYY');
+var apiKey = '4e4c7ba3fe27e6a028d58369839454fe';
+var locationEl = $('.location');
+var tempEl = $('.main-temp');
+var hiEl = $('.high');
+var lowEl = $('.low');
+
+function getWeather(city) {
+   var weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial' + '&appid=' + apiKey;
+   $.ajax({
+       url: weatherURL,
+       method: 'GET',
+   }).then(function (weatherResponse) {
+       weather = weatherResponse;
+     
+       var temp = (weather.main.temp).toFixed(0);
+
+       var icon = weatherResponse.weather[0].icon;
+       var iconSrc = 'https://openweathermap.org/img/wn/' + icon + '@2x.png';
+     
+       locationEl.text(weather.name + ' (' + date + ')');
+      
+       tempEl.text('Temperature: ' + temp + '°F');
+
+       hiEl.text(weather.main.temp_min).toFixed(0);
+
+       lowEl.text(weather.main.temp_max).toFixed(0);
+      
+       })
+   }
 
 
+$('#search-btn').on('click', function (event) {
+   event.preventDefault();
+   var city = $('#search-bar').val().trim();
+   var citiesSearched = JSON.parse(localStorage.getItem('citiesSearched'));
+   if (citiesSearched == null) {
+       citiesSearched = [];
+   }
+   citiesSearched.unshift(city);
+   var citiesPast = localStorage.setItem('citiesSearched', JSON.stringify(citiesSearched));
+   addCityButton(city);
+   getWeather(city);
+})
+
+/*Function to create and display buttons for each location searched. TO-DO:
+write a function to clear values/reset search upon reload or something*/
+function addCityButton(city) {
+   $('#th').text('Previous Cities Searched');
+   var newSearch = $('<tr id="previousSearch">');
+   var cityButton = $('<button id=' + city + ' class=btn>').text(city);
+   newSearch.append(cityButton);
+   cityButton.on('click', function () {
+       getWeather(city);
+   })
+   $('#cityButton').prepend(newSearch);
+}
+
+
+window.onload = function () {
+   var citiesPast = JSON.parse(localStorage.getItem('citiesSearched'));
+   console.log(citiesPast);
+   if (citiesPast == null) {
+       citiesPast = [];
+   }
+
+   for (i = 0; i < citiesPast.length; i++) {
+       if (citiesPast[i] != null) {
+           addCityButton(citiesPast[i]);
+       }
+   }
+
+   if (citiesPast.length > 0) {
+       getWeather(citiesPast[0]);
+   }
+}
+
+////////////Start of Stormglass API for getting wave height.///////////////
    var displayStormglassData = function (fetchedData) {
-      var airTemp = fetchedData.hours[0].airTemperature.noaa;
+      //var airTemp = fetchedData.hours[0].airTemperature.noaa;
  //Converting to Fahrenheit
-      airTemp = ((airTemp * (9 / 5)) + 32).toFixed(2);
-      $("#airTemp").html("<p class='black-text'>Current Temperature</p>" + airTemp + " °F");
+      //airTemp = ((airTemp * (9 / 5)) + 32).toFixed(2);
+      //$(".main-temp").html("<p class='black-text'>Current Temperature</p>" + airTemp + " °F");
 
       var waveHeight = fetchedData.hours[0].waveHeight.noaa;
  //Converting to feet and rounding to 2 decimal points.
       waveHeight = (waveHeight * 3.281).toFixed(2);
-      $("#waveHeight").text(waveHeight + "ft");
+      $(".wave-report").text(waveHeight + "ft");
 
    };
 
- //Fetching gifs from Giphy API
+//TO-DO: Review below to see where to display on the HTML or if we want to use this at all
+ 
+//Fetching gifs from Giphy API. Not sure where to display this on the HTML
 
  var fetchGifs = function () {
    var surfConditions = "";
@@ -54,7 +136,7 @@ $(document).ready(function () {
             }
          })
          .then(function (response) {
-            var giphyResponse = document.querySelector('.waves-giphy');
+            var giphyResponse = document.querySelector('.wave-report');
 
             giphyResponse.innerHTML = "";
 
@@ -70,20 +152,20 @@ $(document).ready(function () {
 
     //Display surf conditions description and append to page as text
 
-      var surfConditionsEl = document.querySelector("#surf-recommendation");
+      var surfConditionsEl = document.querySelector(".wave-report");
 
       surfConditionsEl.innerHTML = surfConditions;
 
    };
 
-
+//TO-DO: Need to work out how to display wave height from Stormglass and where in the HTML
    var fetchStormglassData = function (lat, lng) {
 
       // Convert time to UTC time, required to pass into the fetch parameter
      var currentTime = Math.floor((new Date().getTime()) / 1000);
 
 
-      var params = "airTemperature,waveHeight";
+      var params = "waveHeight";
       apiKey = "07a15aca-a88d-11eb-9cd1-0242ac130002-07a15b42-a88d-11eb-9cd1-0242ac130002"
 
       fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}&start=${currentTime}&end=${currentTime}&source=noaa`, {
@@ -101,55 +183,7 @@ $(document).ready(function () {
             });
          }
          else {
-            document.querySelector(".modal-bg").style.display = "flex";
+            document.querySelector(".wave-report").style.display = "flex";
          };
       });
    };
-
-  //Adding event listener for when the beach is selected
-  var beachSelect = document.querySelector('#select');
-
-   beachSelect.addEventListener("change", function (event) {
-      // set variable for index value of selection
-      var selection = document.getElementById("select").value;
-
-      // converting the lat and lng to correspond with the selected beach
-      var lat = surfSpot[event.target.value].lat;
-      var lng = surfSpot[event.target.value].lng;
-      var beachName = surfSpot[event.target.value].name;
-
-      // Storing last search and lat lng in local storage
-      localStorage.setItem("last-beach-name", beachName);
-      localStorage.setItem("last-selection", selection);
-      localStorage.setItem("last-lat", lat);
-      localStorage.setItem("last-lng", lng);
-      // Fetching new lat and lng variables form Stormglass
-      fetchStormglassData(lat, lng);
-     
-      document.getElementById("current-beach").innerHTML = beachName;
-
-   });
-
-
-//To store values and get from local storage and show the last chosen beach.
-
-   if (localStorage.getItem("last-selection")) {
-      var defaultOpt = document.getElementById("default");
-      defaultOpt.setAttribute("selected", "false");
-
-      // set the value of the selected option to equal the last selection value in local storage
-      beachSelect.selectedIndex = localStorage.getItem("last-selection");
-      lat = localStorage.getItem("last-lat");
-      lng = localStorage.getItem("last-lng");
-
-      var lastSelection = beachSelect.options[beachSelect.selectedIndex];
-      lastSelection.setAttribute("selected", "true");
-
-      fetchStormglassData(lat, lng);
-
-      document.getElementById("current-beach").innerHTML = localStorage.getItem("last-beach-name");
-   } else {
-      beachSelect.selectedIndex = "-1";
-   }
-
-});
