@@ -62,7 +62,7 @@ input[type="text"]{
     color: rgb(36, 36, 36);
 }
 
-.buttons {
+.btn {
     display: block;
     margin: auto;
     margin-top: 1.5em;
@@ -83,7 +83,7 @@ input[type="text"]{
     color: rgb(72, 72, 72);
 }
 
-.buttons:hover {
+.btn:hover {
     background-color: rgba(186, 186, 186, 0.467);
     cursor: pointer;
 }
