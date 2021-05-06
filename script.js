@@ -35,9 +35,10 @@ function getWeather(city) {
        console.log(weather);
      
        var temp = (weather.main.temp).toFixed(0);
-
+      // icons
        var icon = weatherResponse.weather[0].icon;
-       var iconSrc = 'https://openweathermap.org/img/wn/' + icon + '@2x.png';
+       document.getElementById('image-icon').src = `./images/icons/${icon}.png`;
+
    // removed the date from here
        locationEl.text(weather.name);
    // added the date here
