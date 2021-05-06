@@ -33,6 +33,7 @@ body {
     border-bottom-left-radius: 20px;
     background-color:rgba(255, 255, 255, 0.46);
     border-right: none;
+    outline: none;
 }
 
 input[type="text"]{
@@ -81,10 +82,12 @@ input[type="text"]{
 .icon {
     margin-right: 1.8em;
     color: rgb(72, 72, 72);
+    transition: ease-in 0.2s;
 }
 
 .btn:hover {
-    background-color: rgba(186, 186, 186, 0.467);
+    background-color: #95d5b2;
+    transition: linear 0.3s;
     cursor: pointer;
 }
 
@@ -119,10 +122,10 @@ input[type="text"]{
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-evenly;
-    /* border: 1px solid black; */
     margin: auto;
     margin-top: 2em;
     width: 90%;
+    transition: ease-in 0.3s;
 }
 
 .high {
@@ -141,7 +144,7 @@ input[type="text"]{
 }
 
 .wave-report {
-    margin-top: 1.3em;
+    margin-top: 2.8em;
     text-align: center;
     font-size: 45px;
     font-weight: normal;
@@ -174,6 +177,11 @@ input[type="text"]{
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.46);
     box-shadow: 1px 1px 5px rgb(79, 79, 79);
+    transition: ease-in 0.3s;
+}
+
+.day:hover {
+    background-color: #95d5b2;
 }
 
 .icon {
@@ -183,6 +191,10 @@ input[type="text"]{
 
 .icon p {
     margin-left: 3em;
+}
+
+#accent {
+    color: #95d5b2;
 }
 
 @media (max-width:1460px) {

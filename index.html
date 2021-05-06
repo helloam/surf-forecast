@@ -5,24 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>surf Forecasts</title>
+    <!-- css links -->
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.13.0/css/all.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
      <!-- search bar -->
     <div class="search-class">
-        <!-- titles -->
-        <h1 class="title">Surf Forecast</h1>
+        <!-- title -->
+        <h1 class="title">Surf <span id="accent">Forecast</span></h1>
         <form>
             <input type="text" id="search-bar" class="search" name="search" placeholder="location"><button id="search-btn" class="searchbtn"><i class="fas fa-search" id="icon-btn"></i></button>
         </form>
-    <!-- beaches butttons
-        <button class="buttons" id='half-moon-bay'><i class="fas fa-map-pin icon"></i>Half-Moon Bay</button>
-        <button class="buttons" id='santa-cruz'><i class="fas fa-map-pin icon"></i>Santa Cruz</button>
-        <button class="buttons" id='pacifica'><i class="fas fa-map-pin icon"></i>Pacifica</button>
-        <button class="buttons" id='pismo'><i class="fas fa-map-pin icon"></i>Pismo Beach</button>
-        <button class="buttons" id='santa-barbara'><i class="fas fa-map-pin icon"></i>Santa Barbara</button>
-        <button class="buttons" id='san-diego'><i class="fas fa-map-pin icon"></i>San Diego</button>-->
         <table class="table">
             <thead>
                 <tr>
@@ -33,6 +27,7 @@
             </tbody>
         </table>
     </div>
+    <!-- main weather div -->
     <div class="main-weather">
         <h2 class="location" id="beach-title">Santa Barbara</h2>
         <p class="beach" id="date">Beach</p>
@@ -42,8 +37,10 @@
                 <p class="high">13°</p>
                 <p class="low">16°</p>
             </div>
+            <!-- icon image -->
             <img src="./images/icons/01d.png" alt="weather icon" class="image" id="image-icon">
         </div>
+        <!-- wave report -->
         <h2 class="wave-report">Wave Report</h2>
         <div class="report-container">
             <div class="day">
@@ -79,6 +76,7 @@
         </div>
     </div>
 </body>
+<!-- JavaScript links -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="script.js" type="text/javascript">
