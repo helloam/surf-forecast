@@ -1,3 +1,0 @@
-Storm Glass Api Key: 00522cd6-a88d-11eb-8d12-0242ac130002-00522d4e-a88d-11eb-8d12-0242ac130002
-
-
