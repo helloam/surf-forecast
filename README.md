@@ -18,5 +18,5 @@ This app allows end users to get a real-time snapshot of the temperature and sur
 
 ### In collaboration with Dmitriy (https://github.com/Dimavich) and Martin (https://github.com/MRAx09)
 ### Link to live app: https://helloam.github.io/surf-forecast/
-### Screenshot of live app:
+
 
