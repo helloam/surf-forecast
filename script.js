@@ -1,5 +1,6 @@
 // global variables
 var date = moment().format('MMMM Do YYYY');
+document.getElementById('main-weather').style.visibility = 'visible';
 var apiKey = '8942145ec40dc1f3c1818b604a2982d4';
 var locationEl = $('.location');
 var tempEl = $('.main-temp');
@@ -37,7 +38,13 @@ function getWeather(city) {
        lon = weather.coord.lon;
        fetchStormglassData(lat,lon);
        })
-   }
+       .catch(err => {
+          locationEl.text('Error');
+          console.error('This location does not exist. Please check your spelling.');
+          alert('This location does not exist please check your spelling.');
+          return Promise.resolve;
+       })
+}
 
    // search button 
 $('#search-btn').on('click', function (event) {
@@ -91,6 +98,7 @@ window.onload = function () {
 ////////////Start of Stormglass API for getting wave height.///////////////
 var displayStormglassData = function (fetchedData) {
    var waveHeightEl = $('.wave-height');
+
    // displays wave height
    for (let i = 0; i < waveHeightEl.length; i++) {
       waveHeightEl[i].textContent = fetchedData.hours[i].waveHeight.noaa + 'ft';
@@ -122,9 +130,8 @@ var fetchStormglassData = function (lat, lon) {
          response.json().then((jsonData) => {
             displayStormglassData(jsonData);
          });
-      }
-      else {
-         document.querySelector(".wave-report").style.display = "flex";
+      } else {
+         document.querySelector(".wave-report").text('no data');
       };
-   });
+   })
 };
