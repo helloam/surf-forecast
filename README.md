@@ -1,11 +1,11 @@
-# Surf Forecast App
+# Surf Forecast App 
 
-### Introduction
-For avid surfers, there is no easy way to look up the surf conditions in California.
-This app allows end users to get a real-time snapshot of the temperature and surf condition for any given surf spot in the state.
+### Need and Solution
+For avid surfers, there is no easy way to look up the surf conditions throughout the world.
+This app allows end users to get a real-time snapshot of the temperature and surf condition for any given surf spot around the globe.
 
 ### Key Features
-> 1. Search function for ease of use when looking up a surf spot
+> 1. Dynamic search for looking up surf locations
 > 2. Real-time weather temperature indicator
 > 3. Real-time wave height indicator
 
@@ -16,4 +16,7 @@ This app allows end users to get a real-time snapshot of the temperature and sur
 > 4. Font-Awesome
 > 5. Moment.js
 
-### App Demonstation
+In collaboration with Dmitriy (https://github.com/Dimavich) and Martin (https://github.com/MRAx09)
+Link to live app:
+Screenshot of live app:
+
